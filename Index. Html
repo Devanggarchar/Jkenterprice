@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Builder Store</title>
+<style>
+body{font-family:Arial;background:#f2f2f2;}
+.box{background:white;padding:15px;margin:10px;border-radius:10px;}
+button{background:green;color:white;padding:10px;border:none;}
+</style>
+</head>
+
+<body>
+
+<h1>🏗️ My Material Store</h1>
+
+<div class="box">
+<h3>Iron Rod 10mm</h3>
+Price: ₹<span id="ironPrice">60</span>
+<input type="number" id="ironQty">
+</div>
+
+<div class="box">
+<h3>Cement</h3>
+Price: ₹<span id="cementPrice">350</span>
+<input type="number" id="cementQty">
+</div>
+
+<div class="box">
+<h3>Calculator</h3>
+<input type="number" id="area" placeholder="Area">
+<button onclick="calc()">Calculate</button>
+<p id="result"></p>
+</div>
+
+<div class="box">
+<h3>Order</h3>
+<input id="name" placeholder="Name"><br><br>
+<input id="phone" placeholder="Phone"><br><br>
+<input id="address" placeholder="Address"><br><br>
+
+<button onclick="order()">Order on WhatsApp</button>
+</div>
+
+<script>
+function calc(){
+let area=document.getElementById("area").value;
+let cement=area*0.4;
+let steel=area*3;
+
+document.getElementById("result").innerHTML=
+"Cement: "+cement+" bags <br> Steel: "+steel+" kg";
+}
+
+function order(){
+let iron=document.getElementById("ironQty").value;
+let cement=document.getElementById("cementQty").value;
+let name=document.getElementById("name").value;
+let phone=document.getElementById("phone").value;
+let address=document.getElementById("address").value;
+
+let msg=`Order:
+Name:${name}
+Phone:${phone}
+Address:${address}
+
+Iron:${iron}
+Cement:${cement}`;
+
+let url="https://wa.me/918760013333text="+encodeURIComponent(msg);
+
+window.open(url);
+}
+</script>
+
+</body>
+</html>
